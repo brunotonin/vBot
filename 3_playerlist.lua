@@ -148,6 +148,9 @@ Panel
   end
 
 function refreshStatus()
+  if not isEnemy or not isFriend then
+    return
+  end
   for _, spec in ipairs(getSpectators()) do
     if spec:isPlayer() and not spec:isLocalPlayer() then
       if storage[listPanelName].outfits then
