@@ -5,7 +5,9 @@ local candidates = {}
 
 local m = macro(20, "Hold Mwall", function()
     if #candidates == 0 then return end
-
+    if modules.game_cooldown.isGroupCooldownIconActive(1) or getSpellCoolDown('adevo grav tera') then
+        return
+    end
     for _, tile in pairs(candidates) do
         if tile:canShoot() then
             useWith(3180, tile:getTopUseThing())

@@ -235,8 +235,8 @@ Panel
 
   macro(50, function()
     if not storage[conditionPanelName].enabled then return end
-    if (not storage[conditionPanelName].ignoreInPz or not isInPz()) and storage[conditionPanelName].holdUtamo and mana() >= storage[conditionPanelName].utamoCost and not hasManaShield() then say("utamo vita")
-    elseif (not storage[conditionPanelName].ignoreInPz or not isInPz()) and storage[conditionPanelName].holdHaste and mana() >= storage[conditionPanelName].hasteCost and not hasHaste() and not getSpellCoolDown(storage[conditionPanelName].hasteSpell) and (not target() or not storage[conditionPanelName].stopHaste or TargetBot.isCaveBotActionAllowed()) then say(storage[conditionPanelName].hasteSpell)
+    if (not storage[conditionPanelName].ignoreInPz or not isInPz()) and storage[conditionPanelName].holdUtamo and mana() >= storage[conditionPanelName].utamoCost and not modules.game_cooldown.isGroupCooldownIconActive(3) and not hasManaShield() then say("utamo vita")
+    elseif (not storage[conditionPanelName].ignoreInPz or not isInPz()) and storage[conditionPanelName].holdHaste and mana() >= storage[conditionPanelName].hasteCost and not hasHaste() and not getSpellCoolDown(storage[conditionPanelName].hasteSpell) and not modules.game_cooldown.isGroupCooldownIconActive(3) and (not target() or not storage[conditionPanelName].stopHaste or TargetBot.isCaveBotActionAllowed()) then say(storage[conditionPanelName].hasteSpell)
     elseif storage[conditionPanelName].cureParalyse and mana() >= storage[conditionPanelName].paralyseCost and isParalyzed() and not getSpellCoolDown(storage[conditionPanelName].paralyseSpell) then say(storage[conditionPanelName].paralyseSpell)
     end
   end)
